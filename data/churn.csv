@@ -1,0 +1,11 @@
+age,monthly_charges,support_calls,contract_length,churn
+25,50,1,month-to-month,No
+45,120,5,month-to-month,Yes
+30,70,2,one-year,No
+50,130,6,month-to-month,Yes
+22,40,0,two-year,No
+35,80,3,one-year,No
+48,110,4,month-to-month,Yes
+28,60,1,one-year,No
+55,140,7,month-to-month,Yes
+40,90,2,two-year,No
