@@ -24,6 +24,8 @@ customer-churn-predictor/
 │
 ├── data/
 ├── models/
+│   ├──  churn_model.pkl
+│ 
 ├── src/
 │   ├── train.py
 │   └── predict.py
