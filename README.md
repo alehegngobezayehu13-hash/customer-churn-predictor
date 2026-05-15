@@ -23,6 +23,8 @@ An machine learning project that predicts whether a customer is likely to leave 
 customer-churn-predictor/
 │
 ├── data/
+│   ├── churn.csv
+│
 ├── models/
 │   ├──  churn_model.pkl
 │ 
