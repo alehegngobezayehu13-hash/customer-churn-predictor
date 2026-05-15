@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
@@ -30,3 +32,15 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, predictions))
 print("\nClassification Report:")
 print(classification_report(y_test, predictions))
+
+plt.scatter(y_test, predictions)
+plt.xlabel("Actual Churn")
+plt.ylabel("Predicted Churn")
+plt.title("Actual vs Predicted Churn")
+
+plt.show()
+
+with open("models/churn_model.pkl", "wb") as file:
+    pickle.dump(model, file)
+
+print("Model saved successfully!")
