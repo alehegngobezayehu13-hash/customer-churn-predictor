@@ -1,47 +1,80 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+import pickle
 
-data = pd.read_csv("data/churn.csv")
+with open("models/churn_model.pkl", "rb") as file:
+    model = pickle.load(file)
 
-data["churn"] = data["churn"].map({"Yes": 1, "No": 0})
-data = pd.get_dummies(data, columns=["contract_length"])
-
-X = data.drop("churn", axis=1)
-y = data["churn"]
-
-model = LogisticRegression()
-model.fit(X, y)
-
+credit_score = int(input("Enter credit score: "))
 age = int(input("Enter age: "))
-monthly_charges = float(input("Enter monthly charges: "))
-support_calls = int(input("Enter number of support calls: "))
+tenure = int(input("Enter tenure: "))
+balance = float(input("Enter balance: "))
+num_products = int(input("Enter number of products: "))
+has_card = int(input("Has credit card? (1=yes, 0=no): "))
+is_active = int(input("Is active member? (1=yes, 0=no): "))
+salary = float(input("Enter estimated salary: "))
+complain = int(input("Number of complaints: "))
+satisfaction = int(input("Satisfaction score: "))
+points = int(input("Points earned: "))
 
-print("\nContract type:")
-print("1 = month-to-month")
-print("2 = one-year")
-print("3 = two-year")
+print("\nGeography:")
+print("1 = Germany")
+print("2 = Spain")
+print("3 = France")
 
-contract_choice = int(input("Choose contract type: "))
+geo_choice = int(input("Choose geography: "))
 
-month_to_month = 0
-one_year = 0
-two_year = 0
+geo_germany = 0
+geo_spain = 0
 
-if contract_choice == 1:
-    month_to_month = 1
-elif contract_choice == 2:
-    one_year = 1
-elif contract_choice == 3:
-    two_year = 1
+if geo_choice == 1:
+    geo_germany = 1
+elif geo_choice == 2:
+    geo_spain = 1
+
+gender_input = input("Gender (male/female): ").lower()
+
+gender_male = 0
+
+if gender_input == "male":
+    gender_male = 1
+
+print("\nCard Type:")
+print("1 = GOLD")
+print("2 = PLATINUM")
+print("3 = SILVER")
+print("4 = DIAMOND")
+
+card_choice = int(input("Choose card type: "))
+
+card_gold = 0
+card_platinum = 0
+card_silver = 0
+
+if card_choice == 1:
+    card_gold = 1
+elif card_choice == 2:
+    card_platinum = 1
+elif card_choice == 3:
+    card_silver = 1
 
 new_customer = pd.DataFrame({
-    "age": [age],
-    "monthly_charges": [monthly_charges],
-    "support_calls": [support_calls],
-    "contract_length_month-to-month": [month_to_month],
-    "contract_length_one-year": [one_year],
-    "contract_length_two-year": [two_year]
+    "CreditScore": [credit_score],
+    "Age": [age],
+    "Tenure": [tenure],
+    "Balance": [balance],
+    "NumOfProducts": [num_products],
+    "HasCrCard": [has_card],
+    "IsActiveMember": [is_active],
+    "EstimatedSalary": [salary],
+    "Complain": [complain],
+    "Satisfaction Score": [satisfaction],
+    "Point Earned": [points],
+    "Geography_Germany": [geo_germany],
+    "Geography_Spain": [geo_spain],
+    "Gender_Male": [gender_male],
+    "Card Type_GOLD": [card_gold],
+    "Card Type_PLATINUM": [card_platinum],
+    "Card Type_SILVER": [card_silver]
 })
 
 prediction = model.predict(new_customer)

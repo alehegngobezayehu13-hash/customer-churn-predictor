@@ -1,33 +1,32 @@
 # Customer Churn Prediction
 
-An machine learning project that predicts whether a customer is likely to leave a company.
+A machine learning project that predicts whether a bank customer will leave the bank using real-world data.
 
 ## Features
 
-- Data preprocessing
-- Categorical encoding
+- Real Kaggle dataset (Bank Churn)
+- Data preprocessing and feature encoding
 - Logistic Regression model
-- Model evaluation
+- Model evaluation (accuracy)
+- Saved model for reuse
 - Interactive prediction system
-- Data visualization
 
 ## Technologies Used
 
 - Python
 - pandas
 - scikit-learn
-- matplotlib
 
 ## Project Structure
 
 customer-churn-predictor/
 │
 ├── data/
-│   ├── churn.csv
+│   └── churn.csv
 │
 ├── models/
-│   ├──  churn_model.pkl
-│ 
+│   └── churn_model.pkl
+│
 ├── src/
 │   ├── train.py
 │   └── predict.py
